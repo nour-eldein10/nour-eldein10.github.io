@@ -45,21 +45,14 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Get form values
-        const formData = new FormData(contactForm);
-        
-        // You can send this data to a backend service
-        // For now, we'll just show a success message
         const submitBtn = contactForm.querySelector('.btn-submit');
         const originalText = submitBtn.textContent;
         
         submitBtn.textContent = 'Message Sent! ✓';
         submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
         
-        // Reset form
         contactForm.reset();
         
-        // Reset button after 3 seconds
         setTimeout(() => {
             submitBtn.textContent = originalText;
             submitBtn.style.background = '';
@@ -96,15 +89,14 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe project cards and skill cards
-document.querySelectorAll('.project-card, .skill-card, .stat-card').forEach(el => {
+document.querySelectorAll('.project-card, .service-card, .stat-card, .skill-category, .timeline-content').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'all 0.6s ease';
     observer.observe(el);
 });
 
-// Add scroll animation class
+// Parallax effect
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     document.querySelectorAll('.hero-image').forEach(img => {
